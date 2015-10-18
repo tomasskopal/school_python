@@ -1,0 +1,20 @@
+
+u lekci tak, aby používala dva objekty. Tyto
+se budou jmenovat "Bot" a "IO".
+
+Třída Bot bude obsahovat:
+- implementaci rozdělení vstupu na příkaz a parametry umístěte do funkce parse()
+- metodu run(), která bude vykonávat nekonečnou smyčku z prvního úkolu a
+používat pro čtení a výpis dat metody z třídy IO
+- konstruktor s jedním argumentem "io", kterým při inicializaci předáte instanci
+třídy IO
+
+Třída IO bude implementovat:
+- metodu write(text), která vypíše text na obrazovku
+- metodu read(), která načte text z klávesnice
+
+Slovník s definicí příkazů můžete zatím nechat mimo třídy nebo ho umístit do
+jako class atribut to třídy Bot.
+
+Váš __main__ blok upravte tak, aby vytvořil nezbytné instance tříd IO a Bot a
+zavolal metodu run() z instance třídy Bot
