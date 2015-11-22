@@ -1,0 +1,49 @@
+Úkolem na další cvičení je si připravit aplikaci, která umí zpracovávat
+parametry příkazové řádky a konfigurační soubory.
+
+Parametry které nás budou zajímat jsou:
+
+host (H) - povinný
+port (p) - povinný
+url (u) - možnost vícenásobného použití
+verbose (v) - bez parametru, jen příznak
+
+Vše ostatní interpretujte jako název konfiguračního souboru k načtení.
+
+Váš program by měl pomocí (ideálně) tří funkcí (řádka, soubory, sloučení)
+zpracovat parametry příkazové řádky a konfiguračních souborů a vrátit slovník s
+výslednou konfigurací takto (ukázka):
+
+./program -v -u url1 -u url2 --host=serverA base.ini user.ini
+
+** base.ini **
+[server]
+host=serverB
+port=5
+url="url 5"
+
+** user.ini **
+[server]
+port=1
+url="url 3" url4
+
+Volby verbose a host se použijí z příkazové řádky
+Co nebylo na řádce se načte ze souboru user.ini (název sekce [server])
+Co nebylo ani tam se načte ze souboru base.ini
+Co nebylo nikde bude mít vhodnou defaultní hodnotu (None nebo cokoliv jiného Vám
+přijde vhodné)
+
+Výstupem by tedy bylo:
+
+{
+"verbose": True,
+"host": "serverA",
+"port": 1,
+"url": ["url1", "url2", "url 3", "url4", "url 5"]
+}
+
+Vaše logika by měla být co nejjednodušší a využívat standardní knihovny
+ConfigParser a OptionParser. Akceptujeme i použití knihovny docopt. Pro
+zpracování textu obsahujícího uvozovky doporučujeme knihovnu shlex.
+(Moje pozn. ConfigParser slouzi k praci s .ini soubory. OptionParse slouzi ke specifikovani a rozparsovani vztupnich argumentu a parametru)
+
